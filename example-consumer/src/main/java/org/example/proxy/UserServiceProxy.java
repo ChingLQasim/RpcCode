@@ -2,11 +2,11 @@ package org.example.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import org.example.model.RpcRequest;
-import org.example.model.RpcResponse;
+import cn.islandecho.model.RpcRequest;
+import cn.islandecho.model.RpcResponse;
 import org.example.model.User;
-import org.example.serializer.JdkSerializer;
-import org.example.serializer.Serializer;
+import cn.islandecho.serializer.JdkSerializer;
+import cn.islandecho.serializer.Serializer;
 import org.example.service.UserService;
 
 public class UserServiceProxy implements UserService {

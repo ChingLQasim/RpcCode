@@ -1,5 +1,8 @@
 package cn.islandecho.config;
 
+import lombok.Data;
+
+@Data
 public class RpcConfig {
     /**
      * RP名称

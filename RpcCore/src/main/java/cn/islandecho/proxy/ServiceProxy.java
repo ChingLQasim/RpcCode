@@ -2,10 +2,10 @@ package cn.islandecho.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import org.example.model.RpcRequest;
-import org.example.model.RpcResponse;
-import org.example.serializer.JdkSerializer;
-import org.example.serializer.Serializer;
+import cn.islandecho.model.RpcRequest;
+import cn.islandecho.model.RpcResponse;
+import cn.islandecho.serializer.JdkSerializer;
+import cn.islandecho.serializer.Serializer;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

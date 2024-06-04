@@ -4,12 +4,14 @@ package cn.islandecho;
 import cn.islandecho.config.RpcConfig;
 import cn.islandecho.constant.RpcConstant;
 import cn.islandecho.utils.ConfigUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class RpcApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(RpcApplication.class);
+    //private static final Logger log = LoggerFactory.getLogger(RpcApplication.class);
 
     private static volatile RpcConfig rpcConfig;
 
@@ -33,6 +35,7 @@ public class RpcApplication {
             // 加载失败采用默认配置
             newRpcConfig = new RpcConfig();
         }
+        init(newRpcConfig);
     }
 
     /**

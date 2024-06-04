@@ -1,7 +1,9 @@
 package org.example;
 
+import cn.islandecho.config.RpcConfig;
+import cn.islandecho.utils.ConfigUtils;
 import org.example.model.User;
-import org.example.proxy.ServiceProxyFactory;
+import cn.islandecho.proxy.ServiceProxyFactory;
 import org.example.service.UserService;
 
 public class Main {
@@ -10,5 +12,7 @@ public class Main {
         User user = new User();
         user.setName("hello");
         userService.getUser(user);
+        RpcConfig rpcConfig = ConfigUtils.loadConfig(RpcConfig.class, "rpc","dev");
+        System.out.println(rpcConfig);
     }
 }
