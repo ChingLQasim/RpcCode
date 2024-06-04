@@ -1,5 +1,7 @@
 package cn.islandecho.server;
 
+import cn.islandecho.RpcApplication;
+import cn.islandecho.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -16,7 +18,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest httpServerRequest) {
         // 指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         System.out.println("收到请求:" + httpServerRequest.method() + " " + httpServerRequest.uri());
 

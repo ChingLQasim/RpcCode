@@ -1,5 +1,6 @@
 package cn.islandecho.config;
 
+import cn.islandecho.constant.SerializerConstant;
 import lombok.Data;
 
 @Data
@@ -23,4 +24,9 @@ public class RpcConfig {
      * 端口号
      */
     private Integer serverPort = 8888;
+
+    /**
+     * 序列化器
+     */
+    private String serializer = SerializerConstant.JDK;
 }
