@@ -23,7 +23,7 @@ public class SpiLoader {
     /**
      * 对象实例缓存
      */
-    private static Map<String,Class<?>> instanceCache = new ConcurrentHashMap<>();
+    private static Map<String, Object> instanceCache = new ConcurrentHashMap<>();
 
     private static final String RPC_SYSTEM_SPI_DIR = "META-INF/rpc/system";
 
@@ -44,10 +44,15 @@ public class SpiLoader {
      */
     public static void loadAll() {
         for (Class<?> clazz : LOAD_CLASSES) {
-            //load(clazz);
+            load(clazz);
         }
     }
 
+    /**
+     * 加载类
+     * @param clazz
+     * @return
+     */
     public static Map<String, Class<?>> load(Class<?> clazz) {
       log.info("加载的类型为 {} 的SPI", clazz.getName());
       Map<String, Class<?>> keyClassMap = new HashMap<>();
@@ -74,6 +79,29 @@ public class SpiLoader {
       }
       loadMap.put(clazz.getName(), keyClassMap);
       return keyClassMap;
+    }
+
+    public static <T> T getInstanceCache(Class<?> tClass, String key) {
+        String className = tClass.getName();
+        Map<String, Class<?>> classMap = loadMap.get(className);
+        if (classMap == null) {
+            throw new RuntimeException(String.format("SPILoader 未加载 %s 类型", className));
+        }
+        if (!classMap.containsKey(key)) {
+            throw new RuntimeException(String.format("SPILoader加载的%s，不存在key=%s的类", className,key));
+        }
+        // 获取到需要加载的类
+        Class<?> implClazz = classMap.get(key);
+        // 从实例缓存中加载对应的实例化的对象
+        String implClassName = implClazz.getName();
+        if (!instanceCache.containsKey(implClassName)) {
+            try {
+                instanceCache.put(implClassName, implClazz.newInstance());
+            } catch (InstantiationException | IllegalAccessException e) {
+                throw new RuntimeException(String.format("%s 实例化失败", implClassName));
+            }
+        }
+        return (T) instanceCache.get(implClassName);
     }
 
 

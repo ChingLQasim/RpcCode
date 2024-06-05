@@ -16,7 +16,9 @@ public class SerializerFactory {
 //        put(SerializerConstant.KRYO, new KryoSerialier());
 //        put(SerializerConstant.HESSIAN, new HessianSerializer());
 //    } };
-
+    static {
+        SpiLoader.load(Serializer.class);
+    }
 
     /**
      * 默认实例化器
@@ -29,6 +31,6 @@ public class SerializerFactory {
      * @return
      */
     public static Serializer getInstance(String serializerName) {
-        return null;
+        return SpiLoader.getInstanceCache(Serializer.class,serializerName);
     }
 }
