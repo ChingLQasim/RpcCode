@@ -19,7 +19,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     public void handle(HttpServerRequest httpServerRequest) {
         // 指定序列化器
         final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
-
+        System.out.println("11111111111111" + serializer.getClass().getName());
         System.out.println("收到请求:" + httpServerRequest.method() + " " + httpServerRequest.uri());
 
         // 异步处理Http请求

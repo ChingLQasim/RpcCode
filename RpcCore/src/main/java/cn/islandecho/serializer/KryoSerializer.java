@@ -7,7 +7,7 @@ import com.esotericsoftware.kryo.io.Output;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-public class KryoSerialier implements Serializer{
+public class KryoSerializer implements Serializer{
 
     private static final ThreadLocal <Kryo> KRYO_THREAD_LOCAL = ThreadLocal.withInitial(() -> {
                Kryo kryo = new Kryo();

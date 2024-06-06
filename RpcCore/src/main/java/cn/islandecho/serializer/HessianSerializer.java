@@ -2,6 +2,7 @@ package cn.islandecho.serializer;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
+import com.caucho.hessian.io.HessianInput;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
