@@ -23,10 +23,15 @@ public class RpcConfig {
     /**
      * 端口号
      */
-    private Integer serverPort = 8888;
+    private Integer serverPort = 8088;
 
     /**
      * 序列化器
      */
     private String serializer = SerializerConstant.JDK;
+
+    /**
+     * 注册中心配置
+     */
+    private RegisterConfig registerConfig = new RegisterConfig();
 }

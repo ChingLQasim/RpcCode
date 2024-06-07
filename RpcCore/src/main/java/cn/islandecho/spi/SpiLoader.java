@@ -25,9 +25,9 @@ public class SpiLoader {
      */
     private static Map<String, Object> instanceCache = new ConcurrentHashMap<>();
 
-    private static final String RPC_SYSTEM_SPI_DIR = "META-INF/rpc/system";
+    private static final String RPC_SYSTEM_SPI_DIR = "META-INF/rpc/system/";
 
-    private static final String RPC_CUSTOM_SPI_DIR = "META-INF/rpc/custom";
+    private static final String RPC_CUSTOM_SPI_DIR = "META-INF/rpc/custom/";
 
     /**
      * 扫描路径
@@ -69,6 +69,7 @@ public class SpiLoader {
                       if (strArray.length > 1) {
                           String key = strArray[0];
                           String className = strArray[1];
+                          log.info("find SPI class {}", className);
                           keyClassMap.put(key, Class.forName(className));
                       }
                   }

@@ -1,4 +1,4 @@
 jdk=cn.islandecho.serializer.JdkSerializer
 hessian=cn.islandecho.serializer.HessianSerializer
-json=cn.islandecho.serializer.JsonSerializer
+json=cn.islandecho.serializer.JSONSerializer
 kryo=cn.islandecho.serializer.KryoSerializer
