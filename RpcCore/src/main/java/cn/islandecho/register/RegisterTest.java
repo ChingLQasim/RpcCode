@@ -59,4 +59,10 @@ public class RegisterTest {
         List<ServiceMetaInfo> serviceMetaInfoList = Register.serviceDiscovery(serviceKey);
         Assert.assertNotNull(serviceMetaInfoList);
     }
+
+    @Test
+    public void heartBeatTest() throws Exception {
+        register();
+        Thread.sleep(60 * 1000L);
+    }
 }

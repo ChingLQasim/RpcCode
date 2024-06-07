@@ -8,8 +8,6 @@ import cn.islandecho.register.Register;
 import cn.islandecho.register.RegisterFactory;
 import cn.islandecho.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Slf4j
 public class RpcApplication {
@@ -29,6 +27,7 @@ public class RpcApplication {
         Register register = RegisterFactory.getInstance(registerConfig.getRegistry());
         register.init(registerConfig);
         log.info("register init, registerConfig = {}", registerConfig.toString());
+        Runtime.getRuntime().addShutdownHook(new Thread(register::destroy));
     }
 
     /**
