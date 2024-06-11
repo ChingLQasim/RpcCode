@@ -44,4 +44,10 @@ public interface Register {
      * 心跳检测
      */
     void heartBeat();
+
+    /**
+     * 监听消费端缓存key变换
+     * @param serviceNodeKey
+     */
+    void watch(String serviceNodeKey);
 }
